@@ -1,3 +1,6 @@
+const noop = () => {};
+const r = String.raw;
+
 describe('BinarySearchTree', () => {
   var tree;
 
@@ -124,13 +127,13 @@ describe('BinarySearchTree', () => {
       it('should have root.right.left.right (8)', () => {
         expect(tree.root.right.left.right.element).toBe(8);
       });
-      xdescribe('............( 5)................', () => {});
-      xdescribe('......../..........\\............', () => {});
-      xdescribe('....( 3)............(10)........', () => {});
-      xdescribe('.../....\\........../....\\.......', () => {});
-      xdescribe('( 1)....( 4)....( 7)....(15)....', () => {});
-      xdescribe('...\\............/..\\.......\\....', () => {});
-      xdescribe('....( 1)....( 6)....( 8)....(15)', () => {});
+      xdescribe(r`............( 5)................`, noop);
+      xdescribe(r`......../..........\............`, noop);
+      xdescribe(r`....( 3)............(10)........`, noop);
+      xdescribe(r`.../....\........../....\.......`, noop);
+      xdescribe(r`( 1)....( 4)....( 7)....(15)....`, noop);
+      xdescribe(r`...\............/..\.......\....`, noop);
+      xdescribe(r`....( 1)....( 6)....( 8)....(15)`, noop);
 
       it('should have have size 11', () => {
         expect(tree.size).toBe(11);
@@ -157,7 +160,7 @@ describe('BinarySearchTree', () => {
       });
 
       describe('with no children', () => {
-        xdescribe('(5)', () => {});
+        xdescribe(r`'(5)`, noop);
         it('should be true', () => {
           expect(tree.remove(5)).toBe(true);
         });
@@ -174,9 +177,9 @@ describe('BinarySearchTree', () => {
       });
 
       describe('with only a left node (3)', () => {
-        xdescribe('...(5)', () => {});
-        xdescribe('../...', () => {});
-        xdescribe('(3)...', () => {});
+        xdescribe(r`...(5)`, noop);
+        xdescribe(r`../...`, noop);
+        xdescribe(r`(3)...`, noop);
 
         beforeEach(() => {
           tree.root.left = new Node(3);
@@ -205,9 +208,9 @@ describe('BinarySearchTree', () => {
       });
 
       describe('with only a right node (7)', () => {
-        xdescribe('(5)...', () => {});
-        xdescribe('...\\..', () => {});
-        xdescribe('...(7)', () => {});
+        xdescribe(r`(5)...`, noop);
+        xdescribe(r`...\..`, noop);
+        xdescribe(r`...(7)`, noop);
 
         beforeEach(() => {
           tree.root.right = new Node(7);
@@ -236,9 +239,9 @@ describe('BinarySearchTree', () => {
       });
 
       describe('with left node (3) and right node (7)', () => {
-        xdescribe('...(5)...', () => {});
-        xdescribe('../...\\..', () => {});
-        xdescribe('(3)...(7)', () => {});
+        xdescribe(r`...(5)...`, noop);
+        xdescribe(r`../...\..`, noop);
+        xdescribe(r`(3)...(7)`, noop);
 
         beforeEach(() => {
           tree.root.right = new Node(7);
@@ -268,9 +271,9 @@ describe('BinarySearchTree', () => {
     });
 
     describe('when removing a leaf node', () => {
-      xdescribe('...(5)...', () => {});
-      xdescribe('../...\\..', () => {});
-      xdescribe('(3)...(7)', () => {});
+      xdescribe(r`...(5)...`, noop);
+      xdescribe(r`../...\..`, noop);
+      xdescribe(r`(3)...(7)`, noop);
 
       beforeEach(() => {
         tree.root = new Node(5);
@@ -326,15 +329,15 @@ describe('BinarySearchTree', () => {
         });
 
         describe('and is root', () => {
-          xdescribe('..(5) <- removing', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(3).. <- left', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(4)', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(3)..', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(3)', () => {});
+          xdescribe(r`..(5) <- removing`, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(3).. <- left    `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(4)            `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(3)..            `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(3)            `, noop);
 
           it('should replace root with left node', () => {
             var left = tree.root.left;
@@ -349,15 +352,15 @@ describe('BinarySearchTree', () => {
         });
 
         describe('and not root', () => {
-          xdescribe('..(5)', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(3).. <- parent', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(4) <- removing', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(3).. <- left', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(3)', () => {});
+          xdescribe(r`..(5)            `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(3).. <- parent  `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(4) <- removing`, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(3).. <- left    `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(3)            `, noop);
 
           it('should replace parent.right with removed node\'s left', () => {
             var parent = tree.root.left;
@@ -384,15 +387,15 @@ describe('BinarySearchTree', () => {
         });
 
         describe('and is root', () => {
-          xdescribe('(5).. <- removing', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(9) <- right', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(6)..', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(7)', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(6)..', () => {});
+          xdescribe(r`(5).. <- removing`, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(9) <- right   `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(6)..            `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(7)            `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(6)..            `, noop);
 
           it('should replace root with right node', () => {
             var right = tree.root.right;
@@ -407,15 +410,15 @@ describe('BinarySearchTree', () => {
         });
 
         describe('and not root', () => {
-          xdescribe('(5)..', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(9) <- parent', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(6).. <- removing', () => {});
-          xdescribe('..\\..', () => {});
-          xdescribe('..(7) <- right', () => {});
-          xdescribe('../..', () => {});
-          xdescribe('(6)..', () => {});
+          xdescribe(r`(5)..            `, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(9) <- parent  `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(6).. <- removing`, noop);
+          xdescribe(r`..\..            `, noop);
+          xdescribe(r`..(7) <- right   `, noop);
+          xdescribe(r`../..            `, noop);
+          xdescribe(r`(6)..            `, noop);
 
           it('should replace parent.left with removed node\'s right', () => {
             var parent = tree.root.right;
@@ -432,16 +435,15 @@ describe('BinarySearchTree', () => {
       });
 
       describe('with both left and right children', () => {
-        xdescribe('The successor is the left most node of the removed node\'s right subtree', () => {});
-
+        xdescribe(r`The successor is the left most node of the removed node\'s right subtree`, noop);
         describe('and successor node is not a leaf node', () => {
-          xdescribe('....(5)...... <- removing', () => {});
-          xdescribe('../.....\\....', () => {});
-          xdescribe('(3)......(10) <- successor parent', () => {});
-          xdescribe('........./...', () => {});
-          xdescribe('.......(7)... <- successor', () => {});
-          xdescribe('.........\\...', () => {});
-          xdescribe('.........(8).', () => {});
+          xdescribe(r`....(5)...... <- removing        `, noop);
+          xdescribe(r`../.....\....                    `, noop);
+          xdescribe(r`(3)......(10) <- successor parent`, noop);
+          xdescribe(r`........./...                    `, noop);
+          xdescribe(r`.......(7)... <- successor       `, noop);
+          xdescribe(r`.........\...                    `, noop);
+          xdescribe(r`.........(8).                    `, noop);
 
           beforeEach(() => {
             tree.root = new Node(5);
@@ -464,13 +466,21 @@ describe('BinarySearchTree', () => {
             expect(tree.root.right.left.element).toBe(8);
             expect(successorParent.left).toBe(successor.right);
           });
-          xdescribe('The successor by definition cannot have a left child node', () => {});
+          xdescribe(r`The successor by definition cannot have a left child node`, noop);
         });
       });
     });
   });
 
   describe('traversals', () => {
+    xdescribe(r`.........(F).........`, noop);
+    xdescribe(r`....../.......\......`, noop);
+    xdescribe(r`...(B).........(G)...`, noop);
+    xdescribe(r`.../.\...........\...`, noop);
+    xdescribe(r`(A)...(D).........(I)`, noop);
+    xdescribe(r`....../.\........./..`, noop);
+    xdescribe(r`...(C)...(E)...(H)...`, noop);
+
     beforeEach(() => {
       tree.insert('F');
       tree.insert('B');
@@ -482,17 +492,9 @@ describe('BinarySearchTree', () => {
       tree.insert('I');
       tree.insert('H');
     });
-    xdescribe('.........(F).........', () => {});
-    xdescribe('....../.......\\......', () => {});
-    xdescribe('...(B).........(G)...', () => {});
-    xdescribe('.../.\\...........\\...', () => {});
-    xdescribe('(A)...(D).........(I)', () => {});
-    xdescribe('....../.\\........./..', () => {});
-    xdescribe('...(C)...(E)...(H)...', () => {});
-
 
     describe('#inorder', () => {
-      xdescribe(`'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'`, () => {});
+      xdescribe(`'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'`, noop);
       it('should traverse the tree in order', () => {
         var results = [];
         tree.inOrder((element) => results.push(element));
@@ -501,7 +503,7 @@ describe('BinarySearchTree', () => {
     });
 
     describe('#preorder', () => {
-      xdescribe(`'F', 'B', 'A', 'D', 'C', 'E', 'G', 'I', 'H'`, () => {});
+      xdescribe(`'F', 'B', 'A', 'D', 'C', 'E', 'G', 'I', 'H'`, noop);
       it('should traverse the tree pre order', () => {
         var results = [];
         tree.preOrder((element) => results.push(element));
@@ -510,7 +512,7 @@ describe('BinarySearchTree', () => {
     });
 
     describe('#postorder', () => {
-      xdescribe(`'A', 'C', 'E', 'D', 'B', 'H', 'I', 'G', 'F'`, () => {});
+      xdescribe(`'A', 'C', 'E', 'D', 'B', 'H', 'I', 'G', 'F'`, noop);
       it('should traverse the tree post order', () => {
         var results = [];
         tree.postOrder((element) => results.push(element));
